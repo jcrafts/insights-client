@@ -167,6 +167,8 @@ def collect_data_and_upload(config, options, rc=0):
     dc = DataCollector(archive)
 
     stdin_config = json.load(sys.stdin) if options.from_stdin else {}
+    overcloudrc = \
+        stdin_config['overcloudrc'] if 'overcloudrc' in stdin_config else {}
 
     start = time.clock()
     collection_rules, rm_conf = pc.get_conf(options.update, stdin_config)
